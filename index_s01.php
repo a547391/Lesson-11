@@ -88,7 +88,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <?php while ($pyclass01_Rows = $pyclass01->fetch()) { ?>
-                    <li class="nav-item dropend"><a href="#" class="dropdown-item dropdown-toggle">Submenu-1</a>
+                    <li class="nav-item dropend"><a href="#" class="dropdown-item dropdown-toggle"><i class="fas <?php echo $pyclass01_Rows['fonticon']; ?> fa-lg fa-fw"></i><?php echo $pyclass01_Rows['cname']; ?></a>
                         <ul class="dropdown-menu">
                             <li><a href="#" class="dropdown-item">Item-1</a></li>
                             <li><a href="#" class="dropdown-item">Item-2</a></li>
