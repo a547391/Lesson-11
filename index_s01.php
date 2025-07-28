@@ -1,7 +1,7 @@
 <!-- 這是將資料庫，連線程式載入-->
- <?php require_once('Connections/dbset.php'); ?>
- <!-- 如果SESSION沒有啟動，則啟動SEEION功能，這是跨網頁變數存取  -->
-  <?php (!isset($_SESSION))?session_start():""; ?> 
+<?php require_once('Connections/dbset.php'); ?>
+<!-- 如果SESSION沒有啟動，則啟動SEEION功能，這是跨網頁變數存取  -->
+<?php (!isset($_SESSION)) ? session_start() : ""; ?>
 <!doctype html>
 <html lang="zh-TW">
 
@@ -76,94 +76,41 @@
                             </div>
                         </form>
                     </div>
+                    <?php
+                    // 列出產品顏別第一層
+                    $SQLstring = "SELECT * FROM pyclass WHERE level=1 ORDER BY sort";
+                    $pyclass01 = $link->query($SQLstring);
+                    $i = 1; //控制編號順序
+                    ?>
                     <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <i class="fas fa-fire fa-lg fa-fw"></i>彩妝專區
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <table class="table">
-                                        <tbody>
-                                            <tr>
-                                                <td><a href="#"><em class="fas fa-edit"></em>隔離/防曬/飾底乳</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#"><em class="fas fa-edit"></em>BB霜/CC霜</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#"><em class="fas fa-edit"></em>粉餅(蕊)/蜜粉/蜜粉/海綿</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#"><em class="fas fa-edit"></em>遮瑕/毛孔/打亮</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                        <?php while ($pyclass01_Rows = $pyclass01->fetch()) { ?>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne<?php echo $i; ?>">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne<?php echo $i; ?>" aria-expanded="true" aria-controls="collapseOne<?php echo $i; ?>">
+                                        <i class="fas <?php echo $pyclass01_Rows['fonticon']; ?> fa-lg fa-fw"></i><?php echo $pyclass01_Rows['cname']; ?>
+                                    </button>
+                                </h2>
+                                <?php 
+                                //列出產品類別對映的第二層資料
+                                $SQLstring = sprintf("SELECT * FROM pyclass WHERE level=2 AND uplink=%d ORDER BY sort", $pyclass01_Rows['classid']);
+                                $pyclass02 = $link->query($SQLstring);
+                                ?>
+                                <div id="collapseOne<?php echo $i; ?>" class="accordion-collapse collapse <?php echo ($i == 1) ? 'show' : ''; ?>" aria-labelledby="headingOne<?php echo $i; ?>" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <table class="table">
+                                            <tbody>
+                                                <?php while ($pyclass02_Rows = $pyclass02->fetch()) {  ?>
+                                                <tr>
+                                                    <td><a href="#"><em class="fas <?php echo $pyclass02_Rows['fonticon']; ?> fa-tw"></em><?php echo $pyclass02_Rows['cname']; ?></a></td>
+                                                </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <i class="fas fa-paw fa-lg fa-fw"></i>臉部保養
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <table class="table">
-                                        <tbody>
-                                            <tr>
-                                                <td><a href="#"><em class="fas fa-edit"></em>天然成分調理專區</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#"><em class="fas fa-edit"></em>婦嬰,敏感受損調理</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#"><em class="fas fa-edit"></em>Neogen</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#"><em class="fas fa-edit"></em>萊雅</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#"><em class="fas fa-edit"></em>肌研</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#"><em class="fas fa-edit"></em>露得清</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <i class="fas fa-user fa-lg fa-fw"></i>美膚保養
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <table class="table">
-                                        <tbody>
-                                            <tr>
-                                                <td><a href="#"><em class="fas fa-edit"></em>按摩油</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#"><em class="fas fa-edit"></em>纖體保養</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#"><em class="fas fa-edit"></em>身體香氛</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#"><em class="fas fa-edit"></em>身體防曬</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                        <?php $i++;
+                        } ?>
                     </div>
                 </div>
                 <div class="col-md-10">
