@@ -29,11 +29,6 @@
 
                         <!-- 使用PHP函數方式產生類別功能 -->
                         <?php multiList01(); ?>
-
-
-
-
-
                         <li class="nav-item">
                             <a class="nav-link" href="#">會員註冊</a>
                         </li>
@@ -71,10 +66,6 @@
                 </div>
             </div>
         </nav>
-
-
-
-
         <?php
         function multiList01()
         {
@@ -106,9 +97,6 @@
                 </ul>
             </li>
         <?php } ?>
-
-
-
     </Section>
     <Section id="content">
         <div class="container-fluid">
