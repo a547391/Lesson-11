@@ -76,3 +76,23 @@ body {
     background-color: #b4b4b4;
     padding-top: 10px;
 }
+
+.dropdown:hover>.dropdown-menu,
+.dropend:hover>.dropdown-menu {
+  display: block;
+  margin-top: 0.125em;
+  margin-left: 0.125em;
+  margin-right: 80%;
+}
+
+.dropdown .dropdown-menu {
+  display: none;
+}
+
+@media screen and (min-width: 993px) {
+  .dropend:hover>.dropdown-menu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+  }
+}
