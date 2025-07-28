@@ -76,7 +76,8 @@
 
 
         <?php
-        function multiList01(){
+        function multiList01()
+        {
             global $link;
             // 列出產品顏別第一層
             $SQLstring = "SELECT * FROM pyclass WHERE level=1 ORDER BY sort";
@@ -88,14 +89,20 @@
                 </a>
                 <ul class="dropdown-menu">
                     <?php while ($pyclass01_Rows = $pyclass01->fetch()) { ?>
-                    <li class="nav-item dropend"><a href="#" class="dropdown-item dropdown-toggle"><i class="fas <?php echo $pyclass01_Rows['fonticon']; ?> fa-lg fa-fw"></i><?php echo $pyclass01_Rows['cname']; ?></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#" class="dropdown-item">Item-1</a></li>
-                            <li><a href="#" class="dropdown-item">Item-2</a></li>
-                            <li><a href="#" class="dropdown-item">Item-3</a></li>
-                        </ul>
-                    </li>
-                      <?php } ?>
+                        <li class="nav-item dropend"><a href="#" class="dropdown-item dropdown-toggle"><i class="fas <?php echo $pyclass01_Rows['fonticon']; ?> fa-lg fa-fw"></i><?php echo $pyclass01_Rows['cname']; ?></a>
+                            <?php
+                            //列出產品類別對映的第二層資料
+                            $SQLstring = sprintf("SELECT * FROM pyclass WHERE level=2 AND uplink=%d ORDER BY sort", $pyclass01_Rows['classid']);
+                            $pyclass02 = $link->query($SQLstring);
+                            ?>
+                            <ul class="dropdown-menu">
+                                <?php while ($pyclass02_Rows = $pyclass02->fetch()) {  ?>
+
+                                    <li><a href="#" class="dropdown-item"><em class="fas <?php echo $pyclass02_Rows['fonticon']; ?> fa-tw"></em><?php echo $pyclass02_Rows['cname']; ?></a></li>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                    <?php } ?>
                 </ul>
             </li>
         <?php } ?>
@@ -140,7 +147,7 @@
                                             <tbody>
                                                 <?php while ($pyclass02_Rows = $pyclass02->fetch()) {  ?>
                                                     <tr>
-                                                        <td><a href="#"><em class="fas <?php echo $pyclass02_Rows['fonticon']; ?> fa-fw"></em><?php echo $pyclass02_Rows['cname']; ?></a></td>
+                                                        <td><a href="#"><em class="fas <?php echo $pyclass02_Rows['fonticon']; ?> fa-tw"></em><?php echo $pyclass02_Rows['cname']; ?></a></td>
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>
