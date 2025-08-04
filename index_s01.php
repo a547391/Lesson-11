@@ -193,36 +193,35 @@
                     </div>
                 </div>
                 <div class="col-md-10">
-<?php
-//建立廣告輪播carousel資料查詢
-$SQLstring = "SELECT * FROM carousel WHERE caro_online=1 ORDER BY caro_sort";
-$carousel = $link->query($SQLstring);
-$i = 0; //控制active 啟動
-?>
+                    <?php
+                    //建立廣告輪播carousel資料查詢
+                    $SQLstring = "SELECT * FROM carousel WHERE caro_online=1 ORDER BY caro_sort";
+                    $carousel = $link->query($SQLstring);
+                    $i = 0; //控制active 啟動
+                    ?>
                     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <?php for ($i = 0; $i <$carousel->rowCount(); $i++) { ?>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?php echo $i; ?>" class="<?php echo activeShow($i,0); ?>" aria-current="true" aria-label="Slide <?php echo $i; ?>"></button>
+                            <?php for ($i = 0; $i < $carousel->rowCount(); $i++) { ?>
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?php echo $i; ?>" class="<?php echo activeShow($i, 0); ?>" aria-current="true" aria-label="Slide <?php echo $i; ?>"></button>
                             <?php } ?>
 
-                            <!-- <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button> -->
 
 
 
                         </div>
                         <div class="carousel-inner">
-                            <?php 
+                            <?php
                             $i = 0;
                             while ($data = $carousel->fetch()) { ?>
-                            <div class="carousel-item <?php echo activeShow($i, 0); ?>">
-                                <img src="./product_img/<?php echo $data['caro_pic']; ?>" class="d-block w-100" alt="<?php echo $data['caro_title']; ?>">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5><?php echo $data['caro_title']; ?></h5>
-                                    <p><?php echo $data['caro_content']; ?></p>
+                                <div class="carousel-item <?php echo activeShow($i, 0); ?>">
+                                    <img src="./product_img/<?php echo $data['caro_pic']; ?>" class="d-block w-100" alt="<?php echo $data['caro_title']; ?>">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5><?php echo $data['caro_title']; ?></h5>
+                                        <p><?php echo $data['caro_content']; ?></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <?php $i++; } ?>
+                            <?php $i++;
+                            } ?>
                             <!-- <div class="carousel-item">
                                 <img src="./product_img/pic2.jpg" class="d-block w-100" alt="建康養生的好幫手">
                                 <div class="carousel-caption d-none d-md-block">
@@ -459,8 +458,9 @@ $i = 0; //控制active 啟動
 </body>
 
 </html>
-<?php 
-function activeShow($num, $chkPoint) {
+<?php
+function activeShow($num, $chkPoint)
+{
     return (($num == $chkPoint) ? "active" : "");
 }
 ?>
