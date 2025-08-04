@@ -205,9 +205,6 @@
                                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="<?php echo $i; ?>" class="<?php echo activeShow($i, 0); ?>" aria-current="true" aria-label="Slide <?php echo $i; ?>"></button>
                             <?php } ?>
 
-
-
-
                         </div>
                         <div class="carousel-inner">
                             <?php
@@ -222,20 +219,6 @@
                                 </div>
                             <?php $i++;
                             } ?>
-                            <!-- <div class="carousel-item">
-                                <img src="./product_img/pic2.jpg" class="d-block w-100" alt="建康養生的好幫手">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>建康養生的好幫手</h5>
-                                    <p>黑金鑽土雞18小時純粹滴煉，去油濾渣無膽固醇，殺菌包裝常溫保存，含BACC、雙肌肽、牛磺酸、小分子蛋白質等，可單飲或當高湯華陀扶元堂養生飲品系列3折優惠，歡迎選購</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img src="./product_img/pic3.jpg" class="d-block w-100" alt="頂級保濕面膜，臉部滋養的好幫手">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5>頂級保濕面膜，臉部滋養的好幫手</h5>
-                                    <p>保養界的藝術品！內到外優雅自成一格，堅持保養始於自然，升級膚質0負擔，讓肌膚與生活更美好。源自台灣的國際保養品牌！</p>
-                                </div>
-                            </div> -->
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
