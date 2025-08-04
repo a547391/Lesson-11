@@ -6,4 +6,3 @@ $password = "123456";
 $link = new PDO($dsn, $user, $password);
 // PHP 5.3.6 以前版本需要下列語法
 $link->exec("set names utf8");
-?>

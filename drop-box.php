@@ -5,7 +5,7 @@
     <div class="longDesc">
         <p>全新升級 礦物來源溫和潔淨配方<br>讓你在香氛輕舞中實現淨亮柔嫩<br>• 柔和浪漫的櫻花香氛沉浸如春日裡瀰漫的愉悅舒心解放一天疲憊身心舒放無負擔<br>• 添加玻尿酸保濕精華洗後肌膚水嫩細緻綻放水亮光采<br>• 全新升級日本淨膚鎖水技術並添加源自天然保濕因子(NMF)*補給水分並快速鎖住關鍵水提升肌膚保水力 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br>• 日本創新研發礦物來源溫和潔淨配方超細緻保水泡泡溫柔洗淨皮脂與污垢乾淨清爽不黏膩一沖即淨不易殘留<br>*Sodium PCA</p>
         <p>*此商品有新舊包裝請以實際收到商品為主</p>
-        <p><img alt="" src="product_img/zoom2555551.webp" ></p>
+        <p><img alt="" src="product_img/zoom2555551.webp"></p>
     </div>
     <p class="ecTitle">商品規格</p>
     <table class="ecTable">
