@@ -2,6 +2,8 @@
 <?php require_once('Connections/dbset.php'); ?>
 <!-- 如果SESSION沒有啟動，則啟動SEEION功能，這是跨網頁變數存取  -->
 <?php (!isset($_SESSION)) ? session_start() : ""; ?>
+<!-- 載入共用PHP函數庫 -->
+<?php require_once("php_lib.php"); ?>
 <!doctype html>
 <html lang="zh-TW">
 
@@ -257,29 +259,33 @@
                                     <a href="#" class="btn btn-success">放購物車</a>
                                 </div>
                             </div>
-                            <?php if (($i % 4 == 0) || $i == $pList01->rowCount()) { ?></div><?php } ?>
+                            <?php if (($i % 4 == 0) || $i == $pList01->rowCount()) { ?>
+                            </div><?php } ?>
                     <?php $i++;
                     } ?>
-                <div class="row mt-2">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <div class="row mt-2">
+<?php    //取得目前頁數
+if (isset($_GET['totalRows_rs'])) {
+    $totalRows_rs = $_GET['totalRows_rs'];
+} else {
+    $all_rs = $link->query($queryFirst);
+    $totalRows_rs = $all_rs->rowCount();
+}
+$totalPages_rs = ceil($totalRows_rs / $maxRows_rs) - 1;
+//呼叫分頁功能函數
+$prev_rs = "&laquo;";
+$next_rs = "&raquo;";
+$separator = " | ";
+$max_links = 20;
+$pages_rs = buildNavigation($pageNum_rs, $totalPages_rs, $prev_rs, $next_rs, $separator, $max_links, true, 3, "rs");
+?>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <?php echo $pages_rs[0] . $pages_rs[1] . $pages_rs[2]; ?>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
-            </div>
     </Section>
     <hr>
     <Section id="scontent">
