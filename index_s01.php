@@ -352,9 +352,3 @@
 </body>
 
 </html>
-<?php
-function activeShow($num, $chkPoint)
-{
-    return (($num == $chkPoint) ? "active" : "");
-}
-?>
