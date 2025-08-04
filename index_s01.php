@@ -230,152 +230,56 @@
                         </button>
                     </div>
                     <hr>
-                    <div class="row text-center">
-                        <div class="card col-md-3">
-                            <img src="./product_img/pic0101.jpg" class="card-img-top" alt="台大葉黃素膠囊">
-                            <div class="card-body">
-                                <h5 class="card-title">台大葉黃素膠囊</h5>
-                                <p class="card-text">S游離型軟膠囊，採用金盞花植物萃取含20﹪葉黃素，調節生理機能，營養補給，健康維持</p>
-                                <p class="card-text">NT3600</p>
-                                <a href="#" class="btn btn-primary">更多資訊</a>
-                                <a href="#" class="btn btn-success">放購物車</a>
+                    <?php
+                    //建立product藥粧商品RS
+                    $maxRows_rs = 12; //分頁設定數量
+                    $pageNum_rs = 0;  //啟始頁=0
+                    if (isset($_GET['pageNum_rs'])) {
+                        $pageNum_rs = $_GET['pageNum_rs'];
+                    }
+                    $startRow_rs = $pageNum_rs * $maxRows_rs; //計算起始位置
+
+                    //列出產品product資料查詢
+                    $queryFirst = sprintf("SELECT * FROM product,product_img WHERE p_open=1 AND product_img.sort=1 AND product.p_id=product_img.p_id ORDER BY product.P_id DESC", $maxRows_rs);
+                    $query = sprintf("%s LIMIT %d, %d", $queryFirst, $startRow_rs, $maxRows_rs);
+                    $pList01 = $link->query($query);
+                    $i = 1; //控制每列row產生
+                    ?>
+                    <?php while ($pList01_Rows = $pList01->fetch()) { ?>
+                        <?php if ($i % 4 == 1) { ?><div class="row text-center"> <?php } ?>
+                            <div class="card col-md-3">
+                                <img src="./product_img/<?php echo $pList01_Rows['img_file']; ?>" class="card-img-top" alt="<?php echo $pList01_Rows['p_name']; ?>" title="<?php echo $pList01_Rows['p_name']; ?>">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $pList01_Rows['p_name']; ?></h5>
+                                    <p class="card-text"><?php echo mb_substr($pList01_Rows['p_intro'], 0, 30, "utf-8"); ?></p>
+                                    <p>NT<?php echo $pList01_Rows['p_price']; ?></p>
+                                    <a href="#" class="btn btn-primary">更多資訊</a>
+                                    <a href="#" class="btn btn-success">放購物車</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card col-md-3">
-                            <img src="./product_img/pic0102.jpg" class="card-img-top" alt="黃金燕窩生物纖維面膜">
-                            <div class="card-body">
-                                <h5 class="card-title">黃金燕窩生物纖維面膜</h5>
-                                <p class="card-text">手術後保養，約會前急救聖品，媲美專櫃等級！網友推薦最新使用，肌膚很水嫩，感覺很透亮。</p>
-                                <p class="card-text">NT1200</p>
-                                <a href="#" class="btn btn-primary">更多資訊</a>
-                                <a href="#" class="btn btn-success">放購物車</a>
-                            </div>
-                        </div>
-                        <div class="card col-md-3">
-                            <img src="./product_img/pic0103.jpg" class="card-img-top" alt="蝸牛全效活膚霜">
-                            <div class="card-body">
-                                <h5 class="card-title">蝸牛全效活膚霜</h5>
-                                <p class="card-text">無論混合肌、油性肌、痘痘肌、乾性肌、過敏肌等《任何膚質適用》，是修護型保養品！！</p>
-                                <p class="card-text">NT690</p>
-                                <a href="#" class="btn btn-primary">更多資訊</a>
-                                <a href="#" class="btn btn-success">放購物車</a>
-                            </div>
-                        </div>
-                        <div class="card col-md-3">
-                            <img src="./product_img/pic0104.jpg" class="card-img-top" alt="星期四農莊迷迭香精油">
-                            <div class="card-body">
-                                <h5 class="card-title">星期四農莊迷迭香精油</h5>
-                                <p class="card-text">迷迭香精油+薰衣草精油(大自然植物舒眠系列)！！</p>
-                                <p class="card-text">NT1269</p>
-                                <a href="#" class="btn btn-primary">更多資訊</a>
-                                <a href="#" class="btn btn-success">放購物車</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row text-center">
-                        <div class="card col-md-3">
-                            <img src="./product_img/pic0201.jpg" class="card-img-top" alt="頂級金貝貝棉柔魔術氈">
-                            <div class="card-body">
-                                <h5 class="card-title">頂級金貝貝棉柔魔術氈</h5>
-                                <p class="card-text">金貝貝棉柔魔術氈XXL27+1片【6包/箱】，適用15公斤以上</p>
-                                <p class="card-text">NT1560</p>
-                                <a href="#" class="btn btn-primary">更多資訊</a>
-                                <a href="#" class="btn btn-success">放購物車</a>
-                            </div>
-                        </div>
-                        <div class="card col-md-3">
-                            <img src="./product_img/pic0202.jpg" class="card-img-top" alt="櫻桃肌粉餅撲角型-3入">
-                            <div class="card-body">
-                                <h5 class="card-title">櫻桃肌粉餅撲角型-3入</h5>
-                                <p class="card-text">【IH】櫻桃肌粉餅撲角型-3入 CB-3204，乾濕兩用的粉餅專用粉撲。</p>
-                                <p class="card-text">NT119</p>
-                                <a href="#" class="btn btn-primary">更多資訊</a>
-                                <a href="#" class="btn btn-success">放購物車</a>
-                            </div>
-                        </div>
-                        <div class="card col-md-3">
-                            <img src="./product_img/pic0203.jpg" class="card-img-top" alt="NOYL化妝刷套裝組">
-                            <div class="card-body">
-                                <h5 class="card-title">NOYL化妝刷套裝組</h5>
-                                <p class="card-text">NOYL化妝刷套裝組(附收納袋) NY-369，保存期限：7年</p>
-                                <p class="card-text">NT369</p>
-                                <a href="#" class="btn btn-primary">更多資訊</a>
-                                <a href="#" class="btn btn-success">放購物車</a>
-                            </div>
-                        </div>
-                        <div class="card col-md-3">
-                            <img src="./product_img/pic0204.jpg" class="card-img-top" alt="3D蘋果光氣墊粉餅">
-                            <div class="card-body">
-                                <h5 class="card-title">3D蘋果光氣墊粉餅</h5>
-                                <p class="card-text">【Keep in touch】3D蘋果光氣墊粉餅，15g+15g(買一送一補充蕊)。</p>
-                                <p class="card-text">NT1680</p>
-                                <a href="#" class="btn btn-primary">更多資訊</a>
-                                <a href="#" class="btn btn-success">放購物車</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row text-center">
-                        <div class="card col-md-3">
-                            <img src="./product_img/pic0301.jpg" class="card-img-top" alt="EVE'S 魔術性感美唇膏">
-                            <div class="card-body">
-                                <h5 class="card-title">EVE'S 魔術性感美唇膏</h5>
-                                <p class="card-text">魔術性感美唇膏，不沾杯超持久唇色，想不到的魔術效果持續久久。</p>
-                                <p class="card-text">NT580</p>
-                                <a href="#" class="btn btn-primary">更多資訊</a>
-                                <a href="#" class="btn btn-success">放購物車</a>
-                            </div>
-                        </div>
-                        <div class="card col-md-3">
-                            <img src="./product_img/pic0302.jpg" class="card-img-top" alt="DMC三合一精華霜">
-                            <div class="card-body">
-                                <h5 class="card-title">DMC三合一精華霜</h5>
-                                <p class="card-text">DMC 欣蘭 水透透三合一凝凍 洗卸/面膜/精華霜 150g。</p>
-                                <p class="card-text">NT850</p>
-                                <a href="#" class="btn btn-primary">更多資訊</a>
-                                <a href="#" class="btn btn-success">放購物車</a>
-                            </div>
-                        </div>
-                        <div class="card col-md-3">
-                            <img src="./product_img/pic0303.jpg" class="card-img-top" alt="森下仁丹整晚貼眼膜">
-                            <div class="card-body">
-                                <h5 class="card-title">森下仁丹整晚貼眼膜</h5>
-                                <p class="card-text">日本森下仁丹整晚貼眼膜 5對/盒，長效整晚貼，慢速釋放保濕因子。</p>
-                                <p class="card-text">NT300</p>
-                                <a href="#" class="btn btn-primary">更多資訊</a>
-                                <a href="#" class="btn btn-success">放購物車</a>
-                            </div>
-                        </div>
-                        <div class="card col-md-3">
-                            <img src="./product_img/pic0304.jpg" class="card-img-top" alt="【美爽爽】泡泡染">
-                            <div class="card-body">
-                                <h5 class="card-title">【美爽爽】泡泡染</h5>
-                                <p class="card-text">【美爽爽】泡泡染BUBBLE COLOR系列，任意顏色，買五送二。</p>
-                                <p class="card-text">NT3250</p>
-                                <a href="#" class="btn btn-primary">更多資訊</a>
-                                <a href="#" class="btn btn-success">放購物車</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+                            <?php if (($i % 4 == 0) || $i == $pList01->rowCount()) { ?></div><?php } ?>
+                    <?php $i++;
+                    } ?>
+                <div class="row mt-2">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
+            </div>
     </Section>
     <hr>
     <Section id="scontent">
