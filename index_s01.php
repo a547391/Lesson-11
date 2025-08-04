@@ -178,6 +178,14 @@
                         <?php $i++;
                         } ?>
                     </div>
+  <div class="card text-center mt-3" style="border:none;">
+    <div class="card-body">
+        <h3 class="card-title">站長推薦，熱銷商品</h3>
+    </div>
+    <img src="product_img/-10-182065.webp" class="card-img-top" alt="...">
+    <img src="product_img/-SPF50-50ml-196690.webp" class="card-img-top" alt="...">
+    <img src="product_img/-Acnes-BB-30g-533727.webp" class="card-img-top" alt="...">
+  </div>
                 </div>
                 <div class="col-md-10">
                     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
