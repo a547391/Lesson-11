@@ -71,7 +71,8 @@ body {
     padding-top: 30px;
     padding-bottom: 30px;
 }
-#last-data{
+
+#last-data {
     height: 100px;
     background-color: #b4b4b4;
     padding-top: 10px;
@@ -79,32 +80,33 @@ body {
 
 .dropdown:hover>.dropdown-menu,
 .dropend:hover>.dropdown-menu {
-  display: block;
-  margin-top: 0.125em;
-  margin-left: 0.125em;
-  margin-right: 80%;
+    display: block;
+    margin-top: 0.125em;
+    margin-left: 0.125em;
+    margin-right: 80%;
 }
 
 .dropdown .dropdown-menu {
-  display: none;
+    display: none;
 }
 
 @media screen and (min-width: 993px) {
-  .dropend:hover>.dropdown-menu {
-    position: absolute;
-    top: 0;
-    left: 100%;
-  }
+    .dropend:hover>.dropdown-menu {
+        position: absolute;
+        top: 0;
+        left: 100%;
+    }
 }
 
-.card.text-center.mt-3 img{
+.card.text-center.mt-3 img {
     opacity: 1;
     transition: opacity 1s ease;
     -moz-transition: opacity 1s ease;
     -webkit-transition: opacity 1s ease;
     -o-transition: opacity 1s ease;
 }
-.card.text-center.mt-3 img:hover{
-opacity:0.5;
-border:#e600a0 1px solid;
+
+.card.text-center.mt-3 img:hover {
+    opacity: 0.5;
+    border: #e600a0 1px solid;
 }
